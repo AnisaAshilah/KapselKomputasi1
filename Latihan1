@@ -1,0 +1,37 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+def aktivasi(u): 
+  if u<0:
+    return 0
+  else:
+    return 1
+
+x = np.array(
+    [[0.2, 0.3],
+    [0.2, 0.8],
+    [0.8, 0.2],
+    [1, 0.8]]
+    )
+t = np.array([0, 0, 0, 1])
+
+#wo awal
+w = np.array([1,-0.3])
+b=0.5
+
+for i in range(4):
+    print("Iterasi ke-"+str(i+1)+" untuk x("+str(i+1)+")")
+    u = x[i].dot(w)
+
+    print(x[i])
+    y=aktivasi(u)
+    print("u = x("+str(i+1)+")*w("+str(i)+")", u)
+    print("y = y("+str(i+1)+")", u)
+    E=t[i]-y
+    print("E = ", E)
+
+    w = w + b * x[i] * E
+    print("Bobot hasil perbaikan")
+    print(w)
+    print("\n")
+    print("\n")
